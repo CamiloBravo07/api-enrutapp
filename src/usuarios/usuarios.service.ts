@@ -7,15 +7,15 @@ import { Usuario } from './entities/usuario.entity';
 export class UsuariosService {
   constructor(
     @InjectRepository(Usuario)
-    private usuariosRepo: Repository<Usuario>,
+    private readonly usuariosRepo: Repository<Usuario>,
   ) {}
 
   findAll() {
-    return this.usuariosRepo.find({ relations: ['rol', 'tipoDoc'] });
+    return this.usuariosRepo.find();
   }
 
   findOne(id: number) {
-    return this.usuariosRepo.findOne({ where: { idUsuario: id }, relations: ['rol', 'tipoDoc'] });
+    return this.usuariosRepo.findOne({ where: { idUsuario: id } });
   }
 
   create(data: Partial<Usuario>) {

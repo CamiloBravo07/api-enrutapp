@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Roles } from '../../roles/entities/rol.entity';
 import { TiposDoc } from '../../tipos-doc/entities/tipo-doc.entity';
 
@@ -7,11 +13,11 @@ export class Usuario {
   @PrimaryGeneratedColumn()
   idUsuario: number;
 
-  @ManyToOne(() => Roles)
+  @ManyToOne(() => Roles, { eager: true })
   @JoinColumn({ name: 'idRol' })
   rol: Roles;
 
-  @ManyToOne(() => TiposDoc)
+  @ManyToOne(() => TiposDoc, { eager: true })
   @JoinColumn({ name: 'tipoDoc' })
   tipoDoc: TiposDoc;
 
