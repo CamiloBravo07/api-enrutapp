@@ -37,9 +37,6 @@ import { HistorialEstadoEncomiendaModule } from './historial-estado-encomienda/h
 
 @Module({
   imports: [
-    // =========================
-    // CONEXIÓN A BASE DE DATOS
-    // =========================
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -48,12 +45,8 @@ import { HistorialEstadoEncomiendaModule } from './historial-estado-encomienda/h
       password: '12345',
       database: 'enrutapp',
       autoLoadEntities: true,
-      synchronize: false, // ⚠️ mantener false en producción
+      synchronize: false,
     }),
-
-    // =========================
-    // MÓDULOS
-    // =========================
     RolesModule,
     TiposDocModule,
     UsuariosModule,
